@@ -326,7 +326,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG || {};
 
 /* ================= 版本 ================= */
-const VERSION = '1.5.1'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js
+const VERSION = '1.5.2'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js；1.5.2：同步失敗顯示原因
 
 /* ================= 題庫 [圖謎, 答案, 字面提示, 釋義, 出處] ================= */
 const PUZZLES = [
@@ -999,7 +999,7 @@ const Cloud = {
         if($('sLevels').classList.contains('on')) renderLevels();
       }
       await this.push();
-    }catch(e){ this.busy=false; this.render('同步失敗，稍後會再試'); }
+    }catch(e){ this.syncError(e); }
   },
   async push(){
     if(!this.user) return;
@@ -1010,7 +1010,7 @@ const Cloud = {
         provider: this.user.isAnonymous?'anonymous':'google',
         updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
       this.lastSync=Date.now(); this.busy=false; this.render();
-    }catch(e){ this.busy=false; this.render('同步失敗，稍後會再試'); }
+    }catch(e){ this.syncError(e); }
   },
   schedule(){ if(!this.user) return; clearTimeout(this.timer); this.timer=setTimeout(()=>this.push(),2500); },
   flush(){ if(this.timer) this.push(); },
@@ -1041,6 +1041,19 @@ const Cloud = {
       : '登出後會停止同步，本機進度會保留。確定登出嗎？';
     if(!confirm(msg)) return;
     await this.flush(); await this.auth.signOut(); toast('已登出');
+  },
+  syncError(e){
+    this.busy=false;
+    const map={
+      'permission-denied':'Firestore 規則不允許讀寫（請檢查規則）',
+      'not-found':'找不到 Firestore 資料庫（請先建立）',
+      'failed-precondition':'Firestore 資料庫尚未建立或設定不完整',
+      'unavailable':'連不上雲端，稍後會再試',
+      'unauthenticated':'登入已失效，請重新登入',
+    };
+    const msg = map[e.code] || ('同步失敗：'+(e.code||e.message||'未知錯誤'));
+    console.warn('[Cloud]', e.code, e.message);
+    this.render(msg); toast(msg);
   },
   authError(e){
     const map={
