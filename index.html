@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="成語猜猜猜">
+<meta name="theme-color" content="#0F2926">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22%E6%88%90%E8%AA%9E%E7%8C%9C%E7%8C%9C%E7%8C%9C%22%2C%20%22short_name%22%3A%20%22%E7%8C%9C%E6%88%90%E8%AA%9E%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%230F2926%22%2C%20%22theme_color%22%3A%20%22%230F2926%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAQH0lEQVR42u2daXgTVRfHJzPZmqXpnu50SVtoi7IooBWtSBGotKBQEEHUxw1FeGVRUVlkk03AF3hUHnlBRBFEpGxFQMUFFVRkq13pTpukLWn2PXk/BEtt0%2BRmz6Tn/4GHJncyd%2B785txzzz33DoU3IB0DgawJhyYAARwggAMEcIAADhDAAQI4QAAHCOAAARwggAMEAjhAAAcI4AABHCCAAwRwgAAOEMABAjhAAAcI9I%2Bo3jxZcQgNWtx1FXbovXMiiheWJgATJKXEs3AAFqRGBAcyyC7PtTMOZAAfXoUDyAgMPnAgA/jwEhxARiDxgQMZwIfH4QAyAo8Pqg%2BvYfiRvXAjUXS%2BYIZPzuueIJijqAIWXkDE9eCYty0HYOFi03nTiuBABhkRIU23gtinWL0qX/WmZKcBsd1c7Fm8BEfPKwQsXEQEpQFdhMMHoxXAwulG83K/jPuEehApWhX3yRMAIkXr4QEAOBiPQLAcYDbI1YaQfQ4COEAABwjgAHlD1IC5EmY0P/Lh3JavTxhkcjf%2BLG9Qdth9Iwwymb5DppfKDFLLv3K9VGY2GgEOcijy4dzYxybw8/NEx063fH3cIFe45WcZ0VFRY3KtfmVUqvQdMr1UamHFgo74zA8mjRbg8CNRCCLyofsxDCOYzNjJE/iP5ImOnWr5%2BoS7ELEqgs0i2CxmXHTnJ5obLcLjp8Fy%2BJdChw%2BhhfBu3zYmM3ZyAT9/jPDoN8LiEo8iYpGurV3y%2B1/N%2B4sxs9l6DYcNUVbX6m5KAA6XFDMpP2Tonc1fHpFevoZ4SNTDo6w82UHMuKLC6AkPC4%2BcFBaXGBRKz9W5Yde%2B9p9%2B6%2B3b4OwBaYvnGVXq61s%2B6vj9LxitOC9RyRkMw/qvfCN708qwe%2B627xbwI3mDsns1/kHMuKkTB328JX76YwSb5QNPOYaftngehSCoXE7GkgWJzzxBIQiAw0mZNNqKFRs6/rzMFiSnLZ6XtfEdrs2kk5hH8zEKxY5/wAqKmzZp8M4t8Y8/SrC8hwjBZqUvWUDlcm7XduK4zHVL6ZHhAIezfOj0las3WywwJz01c93StMXzGFGRPUvSI8Ki8nJRbxWLFff4o9lbVnrn2aUQRNrrc4PiY7t9zklPHbhldchdgwAOJ2U2GKrWb1XW1Fn%2BDLvn7oHb3uXn53UzErGTCyhUJM9JWVXTcvhEw%2B59ZW%2Bu9k6Iot9zM3vr7yxdTMLMIrs2D%2BDoxX5odZWrNuklHZ1jkKQXZmWueYsRFXHLbISHRuY9gPJTmmZh%2BfL1Df/7vOXQcV3bTS9Unp%2Bfxx8/2qZhocROKchYtsgnnhCS5fN0DmnXnAPnpps56akD1ryN02%2BfxSBXVG/YJr10LemFWfz8PLu/YFSphEdPxU2d6J/3QNMiqly9Wd3QhFgevUldzCElwdyKovJ645793W3y8tcSniyKRPA2zCZT9fptomOneotA%2BFzMGD4nQwBxDiclPPpNWM6wrmMWCo7HTi5AObZx976Oi1cwDKv9YBeVzXbYbmUIQkcMtVus/cdfVbUNNnqQ3tA0qtSKquvK6lqAw2nv1Fzz3x0D31%2BD0%2BkOHdf23c8th0ss/xef/M6JM0eNHYUCh%2BT8n70GwSiU9Df/Iy%2BrbDl0HCOVSDNlr7khvLH/sGP9UXlV7fadPq95zKT80OFDE596XLDgJUfhBjiQO5cjJ/USKWJhdUNTxcr3THq9b%2BvMzcpImDnF8v/wB%2B7NXLuEHhEOcHhkZHvjAJLx0Ipay5eu88J8m23ReMGCRXO6BtzYguTs91b4p/tJbjgwDBN/871W3Ga7jF4iLV%2By1vfznxRK6sKX6GGh3YkJ5Q1Y81ZEbg7A4e7qUqkUmyFFo1JVvmydRijyeVXjp03i3Wk9PIrTaKnzZ/t5eJR8cCTMmmp7yqph9xequgaf15N3Z3bctEm2y8ROKRAsfBmn%2Be92WWRK9uH2T7MTkMawqLGjxKe%2BtxpUINisoXs/8NCUm2DRHMGiOY4eFT5yBD0irHL1ZvfmvfY5y4HTaMmvPGfXDrNTkyz5glZ7HEVFtb9dFzs1mR4RBpbDJcUWFQYlxCJ1PTOL2n/61aTV9fyq6fOvOGmpDp3XPRHS3nxnqUxeWq5pEQEczouVlBg7eQLqADKUFzn6AZG1RF/Zlb9lV/526NRuiJB2tjWXE1dU2Lj3S6vgQrfi1JAQx1NeedYhXyGmcBwF97NLo1BS58%2BOLhyXtWE5M5oPcLhH0QVj2WkpVr7ofZaVER0VipB86k3FFRWGDL3TYgWzN6/0/zQwEsDBjIuJf2Jytw8NckXlqk2y0nJb3QFaEpB3FHxHZvz0x7qOmzKWLIgrKgQ4XKgcg57%2Bxjyc8a/JKtnVsqtzF0suXNQKW23dj0HZXVey%2BFD0sFDBojndx1kUSvyMKWmvv9Lt6gAOVCXPfjqoX/ztbsRkavrsYNnba3TtEgzDOBmptj2V8JEjfO9pEITgtTk0XrDVb8NyhmetX96Z9QhwIA8TxuRGjBrZ%2BadW3Fa2eNWN/YctrgY1mNszq7t70987zOdXkfBkETczw9ZALDkxa%2BM7nPRUP7wFfjqUZael9Ht%2B1u0owg%2B/1H6426hUdX7CzcqwGxDj9BcQQUycwXBllovTPw2lWMjdg%2Bnh3WNZ1GBuzKR8%2B2PvEN6ANW9d3/zRzXPnAQ47YvAjM5YssGQUq%2Boa6nd8KrtW1t2lyB6AYtKDB2ZKL12NnzHZ01k2Ebk5mAsI4nR62mtzKtcYJOf/BDh6rxCHnbFsES2EZ5Armj47KD75ndlksvKkog0FgwdlSy5clF3528%2BHjgaZXFZaLr10FSyHrWc9/a35zNhoUcmZpr0He8vWCYqPZcYgxZHYyf0wDKtYsdGnV0Xx28R3MsFhNplkV0rrdnxie54iZNhgxB9kJSX49op4gwcmzppWtX6rpllIOjj8bLRiNjftO2R3Biv07iGIv0ewWT1zsfjjRifPeZYtSPb01QQlxqe9PpeV0i9700qUCRqAw1XRI8K4mQ6s0usaKbl1zQx61Jjc7E0rszetjBqTizMZnqgnLYSXsXQhwQrCMIxgBaW/%2BWrCrKl%2BN%2BMTYHBE5OY4lF3H6gHHbY9EkJw859khu7clvTCL1c%2BdHRBOp6e/Pb9bdCv2sQn9V7zRW0AM4HAHHA%2BOdNC227nrBCuIn583cOu7meuWRuTmdF2U67QHmvrqC1bjWsF3ZGZvXgXZ5x4RW5CMmPLjhE/KHZCeOn/24F1bE5%2BZ3nUbOEeVMHNKWM5wG91i5rtv2813hNGKw7K695cdHyU81LEW4XJiJo6PmTjeg2NbKjXpxac4/dNqt%2B/058QfMlkOKpcT8aDDUUhqMNdvnaesDcsRAzZgOeyajQediIJTCIJgBRlVaoeOajt7Tl1/a8MMWigvumCsjcJGjaZ5f/HtB47JQNwLhJWUmLXxnSsvvaaXygAOF0wxQfDH5zl5kVyOo3BIfvvj5i%2B/d4YrbMNhUmubvzra9XSIcGhFrbXbd/onGWSCIyI3x%2BkUfmowVytq9avL0bXdrN64XVFeZXXmCOBwLGzQM1kQXTT/czsMMrn87woYyrpB0QVjXVn503UbUFBAwUEN5qIvWgE4%2BhYccdMmWWYoekp2rQxpttO/F7MDHE6KGcPnj3vI%2BoDiwsWK5evNeoN9NnCAIxAd0oQni6yudWv99sfarR%2BbTSYKFWUlHMARcHBwMgRWJinM5hsHips%2B/8qSXoW0TBK6lQCDA6fRkmc/3e1Do1JVvemDrq8sQbIcAEeAwZH4zHRWSr%2Bun6hq6ivXvq8Viv913wkqAhsARwDBEXrPXd02NReXfFu/c69J133rSDTLATc6UOBgREWkvPJc559acWvN1o9ll0ut9z4MlCQ/oCMg4KAQhGDhy1QO2%2BJ7ik5%2B27jrC6NGY70wleqGxC0QWeCInzHZsgJRVd9Yv2OP7GqZrdqjvanEIHd4O7bQYUM7XwxFCwux4zszGV2TgzyUsdzX4eANuSP20Uf0UlnT3oOtp8/anbFETORB3xS7UxGj7kMvTAQxE5%2BZDpbDswrPGdZ86FjzgWKjWoNS3u4zfQuODikGIjscNVs/dqg8PdRTcFStfb8z2cfhNuVyhn72YQDAgZO69ozoKDQ4ZGAG%2BhwcQXExdssYVWqTTgd3uu/BkRAHDgfAYX0AGYSwYAng6ItwcNJTUdYl230/CygA4QgdcRdKMVVNPdzmvgUHhSDCc5A2C%2Bx84Tmor8AROfp%2BGlqQAyxH34KDnZoUP2MKSknNjRaDQul9qxYYcPhpPgc3KyPtjXlGpcqoUhvVaqNaY9JqzXoDhlEY/Ah2WgriotmOPy976qmi0wg226hQ9nw7qRc2lOrTcCjKqmre38EfP9rFLSI9B4dlDTSGYSadzqhUGRQqo0plmRLipKfYPdxsNAIcTspsMnX8canjj0u8Qdkpc593brmbSauT23yzgkv4VtVcW7A05K5BkaNGMviRiA7Q7bqRIWjr7z6H9NK10kXL1I3NThx789yFnmmF7uPXrKyqubHv0OUXF9Z99InZYHAUXIDDDdK1SypWbOgtGcyGRCe/9YaRMxpFx0%2BXL1vnEB/a1naAwz3SilpbT5116BBVXYOivMprNZRdLWv89Ev08n770j9SDmXbzp5zqHzLoeNerqHoxGmjSoVYWFl5HeBwm1S1DegOhKK8qu2HX7xcQ5NWJ7nwF0pJvUQq85in3BfhMBuNmiY0t9Rsrtuxxyd70SvKkDoy0fFTpNgqn0wRUp2kA6VY454Dyupa35i3OvvvHVbVNjR/dYwUDU6m3QT1CHA07jnQde82JzsIjdaJ10tjGKZttZMeoKqpr1j1HikiYCSDo%2BtrvHrKIFc07T0oKjnj4lnUjc3XN3/g3GhC1y7BzGar67bNBkPr6R/qd31u0mjJ0uBkgsPUyz4tRpVaWFzSUlzi6H6S3T2Gyuvik9%2B1ff%2Bz80%2B22WxQqm4t1%2BsctTYLJRcuCotLLC%2B1JJHIBIf5nykus9FoUCjVdY2y0nJ5aYWiotq5aLRRrdGKW3XiNllpxc2fz2vFbtiOUtfWrmu/qRWKtUKxqr5JevmajgzxLtLDITx2Snz6rEGhdNEyi0rOtJ09Z9LrbfdTzunq3DexQBGZ4DDIFZjcDb9j0upIMbUBQ1kQwAECOEAABwjgAAEcIJDv4Rh%2BZC%2B0OIna0ONwnC%2BYAXeUpG2LBzD4YDZIAAcYD5K2KtVX%2BAMx/m9xKbwB6S7%2BRHEIzenLA0Q82m6FHXofw%2BEiHyAPdSgukuFthxTsBLnakOqTawMTQopHyz3dCnrPAr2Md7BwvU/BfJvsA72Mn8ttPodbUAX51b3A/bBOID%2B5C7jf1gzk8/bH/bx%2BIB%2B2PE6KWoJ80uY4ieoK8nJr46SrMchr7ey2IJgNOREfA/nD4%2BcNOIASkppkr8IBIpcg%2BxwEcIAADhDAAQI4QAAHCOAAARwggAMEcIAADhAI4AABHCCAAwRwgAAOEMABAjhAAAcI4AD1Pf0fs9HcobjZ4e4AAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22180x180%22%2C%20%22type%22%3A%20%22image/png%22%7D%5D%7D">
+<title>成語猜猜猜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#DDE8E1; --bg-deep:#C9D9CF; --ink:#1B2A26; --ink-soft:#4A5C56;
+  --paper:#F7EBCF; --paper-edge:#D9C28E; --paper-ink:#2A1E12;
+  --seal:#C0392B; --seal-deep:#8E2319; --gold:#C9962F; --jade:#2F7D6A;
+  --panel:#EEF4F0; --line:rgba(27,42,38,.14);
+  --kai:"LXGW WenKai TC","Kaiti TC","BiauKai","STKaiti","DFKai-SB",serif;
+  --sans:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F2926; --bg-deep:#0A1E1B; --ink:#E6EFEA; --ink-soft:#9DB3AB;
+    --panel:#16362F; --line:rgba(230,239,234,.14); --jade:#5FB8A0; --gold:#E0B34A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F2926; --bg-deep:#0A1E1B; --ink:#E6EFEA; --ink-soft:#9DB3AB;
+  --panel:#16362F; --line:rgba(230,239,234,.14); --jade:#5FB8A0; --gold:#E0B34A;
+}
+*,*::before,*::after{box-sizing:inherit;-webkit-tap-highlight-color:transparent}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  -webkit-user-select:none;user-select:none;overscroll-behavior:none;overflow:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.app{height:100%;max-width:520px;margin:0 auto;position:relative;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column;min-height:0;padding:12px 16px 16px}
+.screen.on{display:flex}
+
+/* ---------- top bar ---------- */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px}
+.back{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--panel)}
+.coins{display:flex;align-items:center;gap:6px;background:var(--panel);border-radius:22px;padding:8px 14px;font-weight:700;font-variant-numeric:tabular-nums}
+.coin{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FBE39A,var(--gold) 60%,#8A6415);box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);position:relative}
+.coin::after{content:"";position:absolute;inset:6px;border:1.5px solid rgba(90,60,10,.55)}
+.bar h2{margin:0;font-family:var(--kai);font-size:22px;font-weight:700}
+
+/* ---------- home ---------- */
+.home{justify-content:space-between}
+.hero{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center}
+.title{display:grid;grid-template-columns:repeat(3,auto);gap:8px}
+.title span{width:clamp(74px,24vw,104px);aspect-ratio:1;display:grid;place-items:center;
+  font-family:var(--kai);font-weight:700;font-size:clamp(46px,15vw,66px);
+  background:var(--paper);color:var(--paper-ink);border-radius:10px;
+  box-shadow:0 5px 0 var(--paper-edge),0 10px 20px rgba(0,0,0,.18)}
+.title span:nth-child(2){transform:rotate(-4deg) translateY(-6px)}
+.title span:nth-child(3){background:var(--seal);color:#FBEFE0;box-shadow:0 5px 0 var(--seal-deep),0 10px 20px rgba(0,0,0,.2);transform:rotate(3deg)}
+.sub{font-family:var(--kai);font-size:26px;letter-spacing:.3em;margin-top:-6px;color:var(--ink-soft)}
+.rank{display:flex;flex-direction:column;align-items:center;gap:6px}
+.rank b{font-family:var(--kai);font-size:30px}
+.rank small{color:var(--ink-soft);font-size:14px}
+.progress{width:220px;height:8px;border-radius:4px;background:var(--bg-deep);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--seal);border-radius:4px;transition:width .4s}
+.menu{display:grid;gap:12px}
+.btn{height:56px;border-radius:14px;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn.primary{background:var(--seal);color:#FFF4E6;box-shadow:0 4px 0 var(--seal-deep)}
+.btn.primary:active{transform:translateY(3px);box-shadow:0 1px 0 var(--seal-deep)}
+.btn.ghost{background:var(--panel);box-shadow:0 3px 0 var(--line)}
+.btn.ghost:active{transform:translateY(2px);box-shadow:none}
+.btn:disabled{opacity:.45;pointer-events:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ver{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:12px;font-variant-numeric:tabular-nums;opacity:.8}
+.pill{font-size:13px;font-weight:500;background:var(--gold);color:#2A1E00;border-radius:10px;padding:2px 8px}
+
+/* ---------- level select ---------- */
+.levels{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px 2px 20px;margin:0 -2px}
+.chapter{margin:18px 0 10px;display:flex;align-items:baseline;justify-content:space-between}
+.chapter h3{margin:0;font-family:var(--kai);font-size:22px}
+.chapter span{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.lv{aspect-ratio:1;border-radius:12px;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:700;font-size:18px;position:relative;font-variant-numeric:tabular-nums}
+.lv.done{background:var(--seal);color:#FFF1E2}
+.lv .st{font-size:10px;letter-spacing:1px;color:#FFD774}
+.lv.lock{opacity:.4}
+.lv.next{box-shadow:inset 0 0 0 3px var(--seal)}
+
+/* ---------- play ---------- */
+.play{gap:12px}
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding-top:4px}
+.controls{display:flex;flex-direction:column;gap:10px}
+.card{flex:1;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:34px 14px 14px;
+  box-shadow:0 6px 0 var(--paper-edge),0 14px 26px rgba(0,0,0,.16);position:relative;text-align:center;
+  background-image:radial-gradient(rgba(120,90,40,.07) 1px,transparent 1px);background-size:7px 7px}
+.clueBox{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
+.scene{position:relative;flex:none}
+.scene span{position:absolute;line-height:1;white-space:nowrap;transform-origin:center}
+.scene .k{font-family:var(--kai);font-weight:700}
+.a2hs{display:flex;align-items:center;gap:10px;background:var(--panel);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:12px}
+.a2hs span{flex:1;line-height:1.5}
+.a2hs button{font-size:18px;width:28px;height:28px;border-radius:50%;flex:none}
+.saveio{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+.saveio .btn{height:44px;font-size:15px}
+.clue{font-size:clamp(52px,17vw,84px);line-height:1.2;letter-spacing:4px;word-break:break-all;max-width:100%}
+.clue.long{font-size:clamp(44px,13vw,68px)}
+.lvlabel{position:absolute;top:10px;left:14px;font-family:var(--kai);font-size:16px;color:#8A6A3A}
+.rewardTag{position:absolute;top:8px;right:10px;display:flex;align-items:center;gap:5px;font-size:14px;font-weight:700;
+  font-family:var(--sans);padding:3px 10px 3px 6px;border-radius:14px;background:rgba(201,150,47,.18);color:#6B4C10;font-variant-numeric:tabular-nums}
+.rewardTag .coin{width:14px;height:14px}
+.rewardTag .coin::after{inset:4px;border-width:1px}
+.rewardTag.full{background:var(--gold);color:#2A1E00}
+.rewardTag.done{background:rgba(0,0,0,.07);color:#7A6A55;padding-left:10px}
+.rewardTag.drop{animation:drop .5s}
+@keyframes drop{0%{transform:scale(1)}30%{transform:scale(1.25)}100%{transform:scale(1)}}
+.textclue{margin-top:10px;font-family:var(--kai);font-size:18px;color:var(--seal-deep);min-height:1.4em}
+.slots{display:flex;justify-content:center;gap:10px;margin-top:4px}
+.slot{width:clamp(62px,19vw,76px);aspect-ratio:1;border-radius:12px;display:grid;place-items:center;
+  font-family:var(--kai);font-weight:700;font-size:clamp(36px,11vw,44px);
+  background:var(--bg-deep);box-shadow:inset 0 3px 0 rgba(0,0,0,.12);color:var(--ink)}
+.slot.fill{background:var(--paper);color:var(--paper-ink);box-shadow:0 4px 0 var(--paper-edge)}
+.slot.locked{background:var(--jade);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.slot.bad{background:#E9B7AE;color:var(--seal-deep);box-shadow:0 4px 0 #C98A7E}
+.slots.shake{animation:shake .45s}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-10px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.hints{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.hint{background:var(--panel);border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;font-weight:700;font-size:15px}
+.hint small{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:var(--ink-soft)}
+.hint small .coin{width:12px;height:12px}
+.hint small .coin::after{inset:3.5px;border-width:1px}
+.hint:disabled{opacity:.4}
+.pool{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.ch{aspect-ratio:1;border-radius:12px;background:var(--paper);color:var(--paper-ink);
+  font-family:var(--kai);font-weight:700;font-size:clamp(28px,8.5vw,36px);display:grid;place-items:center;
+  box-shadow:0 4px 0 var(--paper-edge);transition:transform .08s}
+.ch:active{transform:translateY(3px);box-shadow:0 1px 0 var(--paper-edge)}
+.ch.used,.ch.gone{visibility:hidden}
+
+/* ---------- modal ---------- */
+.mask{position:fixed;inset:0;background:rgba(8,18,16,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.mask.on{display:flex}
+.modal{width:100%;max-width:420px;background:var(--paper);color:var(--paper-ink);border-radius:20px;padding:26px 20px 20px;position:relative;
+  box-shadow:0 8px 0 var(--paper-edge),0 24px 50px rgba(0,0,0,.35);max-height:calc(100% - 20px);overflow-y:auto}
+.seal{position:absolute;top:-26px;right:16px;width:84px;height:84px;border:4px solid var(--seal);color:var(--seal);border-radius:10px;
+  display:grid;grid-template-columns:1fr 1fr;place-items:center;font-family:var(--kai);font-weight:700;font-size:30px;line-height:1;
+  background:rgba(247,235,207,.9);transform:rotate(12deg);padding:4px}
+.seal.stamp{animation:stamp .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes stamp{0%{transform:rotate(12deg) scale(2.6);opacity:0}60%{opacity:1}100%{transform:rotate(12deg) scale(1)}}
+.answer{font-family:var(--kai);font-weight:700;font-size:48px;letter-spacing:.12em;margin:4px 0 2px}
+.stars{font-size:26px;letter-spacing:6px;color:var(--gold);min-height:1.2em}
+.stars .off{color:rgba(0,0,0,.15)}
+.meaning{font-family:var(--kai);font-size:19px;line-height:1.75;margin:12px 0 4px}
+.source{font-size:14px;color:#7A5E36}
+.reward{margin:12px 0 16px;font-weight:700;display:flex;align-items:center;gap:6px}
+.modal .btn.ghost{background:rgba(0,0,0,.06);box-shadow:none;color:var(--paper-ink)}
+.modal h3{font-family:var(--kai);font-size:26px;margin:0 0 10px}
+.modal p{line-height:1.7;margin:0 0 12px;font-size:15px}
+.setrow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.1);font-size:16px}
+.toggle{width:52px;height:30px;border-radius:15px;background:rgba(0,0,0,.2);position:relative;transition:background .2s}
+.toggle::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.toggle.on{background:var(--jade)}
+.toggle.on::after{left:25px}
+.toast{position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);
+  padding:10px 18px;border-radius:22px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20;white-space:nowrap}
+.toast.on{opacity:1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin:6px 0 14px}
+.stats b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.stats small{font-size:12px;color:#7A5E36}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-height:700px){.clue,.clue.long{font-size:42px}.card{min-height:110px;padding:28px 10px 10px}.pool{gap:6px}.stage{gap:10px}.hint{padding:6px 4px}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- 首頁 -->
+  <section class="screen home on" id="sHome">
+    <div class="bar">
+      <button class="back" id="btnSettings" aria-label="設定">⚙︎</button>
+      <div class="coins"><span class="coin"></span><span class="coinVal">0</span></div>
+    </div>
+    <div class="hero">
+      <div class="title" aria-label="猜成語"><span>猜</span><span>成</span><span>語</span></div>
+      <div class="sub">看圖闖關</div>
+      <div class="rank">
+        <b id="rankName">童生</b>
+        <div class="progress"><i id="rankBar" style="width:0"></i></div>
+        <small id="rankText">已過 0 / 200 關</small>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="btn primary" id="btnContinue">開始闖關</button>
+      <div class="row2">
+        <button class="btn ghost" id="btnLevels">選擇關卡</button>
+        <button class="btn ghost" id="btnSign">每日簽到</button>
+      </div>
+      <div class="a2hs" id="a2hs" hidden><span>用 Safari 點「分享」→「加入主畫面」，就能全螢幕遊玩</span><button id="a2hsClose" aria-label="關閉提示">✕</button></div>
+      <div class="ver" id="verText"></div>
+    </div>
+  </section>
+
+  <!-- 關卡選擇 -->
+  <section class="screen" id="sLevels">
+    <div class="bar">
+      <button class="back" data-go="sHome" aria-label="返回">‹</button>
+      <h2>選擇關卡</h2>
+      <div class="coins"><span class="coin"></span><span class="coinVal">0</span></div>
+    </div>
+    <div class="levels" id="levelList"></div>
+  </section>
+
+  <!-- 遊戲 -->
+  <section class="screen play" id="sPlay">
+    <div class="bar">
+      <button class="back" data-go="sLevels" aria-label="返回關卡">‹</button>
+      <h2 id="playRank">童生</h2>
+      <div class="coins"><span class="coin"></span><span class="coinVal">0</span></div>
+    </div>
+    <div class="stage">
+      <div class="card">
+        <div class="lvlabel" id="lvLabel">第 1 關</div>
+        <div class="rewardTag" id="rewardTag"></div>
+        <div class="clueBox" id="clueBox"></div>
+        <div class="textclue" id="textClue"></div>
+      </div>
+      <div class="slots" id="slots"></div>
+    </div>
+    <div class="controls">
+    <div class="hints">
+      <button class="hint" id="hReveal">揭一字<small><span class="coin"></span>30</small></button>
+      <button class="hint" id="hRemove">刪錯字<small><span class="coin"></span>20</small></button>
+      <button class="hint" id="hClue">字面提示<small><span class="coin"></span>10</small></button>
+    </div>
+    <div class="pool" id="pool"></div>
+    </div>
+  </section>
+</div>
+
+<!-- 過關 -->
+<div class="mask" id="mWin">
+  <div class="modal">
+    <div class="seal" id="winSeal"><span>正</span><span>確</span><span>過</span><span>關</span></div>
+    <div class="stars" id="winStars"></div>
+    <div class="answer" id="winAnswer"></div>
+    <div class="meaning" id="winMeaning"></div>
+    <div class="source" id="winSource"></div>
+    <div class="reward" id="winReward"></div>
+    <div class="row2">
+      <button class="btn ghost" id="winList">關卡列表</button>
+      <button class="btn primary" id="winNext">下一關</button>
+    </div>
+  </div>
+</div>
+
+<!-- 設定 -->
+<div class="mask" id="mSettings">
+  <div class="modal">
+    <h3>設定與紀錄</h3>
+    <div class="stats">
+      <div><b id="stCleared">0</b><small>已過關卡</small></div>
+      <div><b id="stPerfect">0</b><small>三星關卡</small></div>
+      <div><b id="stStreak">0</b><small>連續簽到</small></div>
+    </div>
+    <div class="setrow"><span>音效</span><button class="toggle" id="tgSound" aria-label="音效開關"></button></div>
+    <div class="setrow"><span>外觀</span><button class="btn ghost" id="btnTheme" style="height:36px;padding:0 14px;font-size:15px">跟隨系統</button></div>
+    <div class="saveio">
+      <button class="btn ghost" id="btnExport">匯出存檔</button>
+      <button class="btn ghost" id="btnImport">匯入存檔</button>
+    </div>
+    <p style="margin-top:10px;font-size:14px;color:#7A5E36">紀錄只存在這台裝置的瀏覽器裡，換網址或換手機時，用「匯出存檔」複製代碼，到新地方「匯入存檔」貼上即可。</p>
+    <div class="row2">
+      <button class="btn ghost" id="btnReset" style="color:var(--seal)">清除紀錄</button>
+      <button class="btn primary" id="btnCloseSet">關閉</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 版本 ================= */
+const VERSION = '1.4.0'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入
+
+/* ================= 題庫 [圖謎, 答案, 字面提示, 釋義, 出處] ================= */
+const PUZZLES = [
+ ['🎨🐍➕🦶','畫蛇添足','多此一舉','比喻做了多餘的事，反而弄巧成拙。','《戰國策・齊策二》'],
+ ['🕳️🐸👀☁️','井底之蛙','眼界很小','比喻見識狹窄、自以為是的人。','《莊子・秋水》'],
+ ['🦊🐯💪','狐假虎威','借別人的勢力','比喻倚仗別人的權勢來欺壓他人。','《戰國策・楚策一》'],
+ ['🐑🏃💨🔨🏚️','亡羊補牢','事後及時補救','比喻出了問題後及時補救，還不算晚。','《戰國策・楚策四》'],
+ ['🐂🎻','對牛彈琴','白費口舌','比喻對不懂道理的人講道理；也用來譏笑說話不看對象。','漢・牟融《理惑論》'],
+ ['1️⃣🏹🐦🐦','一箭雙鵰','一舉兩得','比喻做一件事同時達到兩個目的。','《北史・長孫晟傳》'],
+ ['🐯🗣️🐍〰️','虎頭蛇尾','開頭好結尾差','比喻做事有始無終，起初聲勢很大，後來勁頭很小。','元・康進之《李逵負荊》'],
+ ['🧍🌳⏳🐇','守株待兔','不勞而獲的空想','比喻死守狹隘經驗不知變通，或妄想不勞而獲。','《韓非子・五蠹》'],
+ ['🐟💧😊','如魚得水','找到合適環境','比喻得到與自己非常投合的人，或非常適合的環境。','《三國志・蜀書・諸葛亮傳》'],
+ ['🦢🐔🐔🐔','鶴立雞群','出類拔萃','比喻一個人的才能或儀表在一群人中非常突出。','《世說新語・容止》'],
+
+ ['❄️🎁🔥','雪中送炭','及時幫助','比喻在別人急需時給予幫助。','宋・范成大〈大雪送炭與芥隱〉'],
+ ['🧣➕🌸','錦上添花','好上加好','比喻好上加好，美上添美。','宋・王安石〈即事〉'],
+ ['🍷🏹🐍😱','杯弓蛇影','疑神疑鬼','比喻因疑神疑鬼而引起恐懼。','漢・應劭《風俗通義・怪神》'],
+ ['👴⛏️⛰️','愚公移山','堅持不懈','比喻做事有毅力，不怕困難。','《列子・湯問》'],
+ ['💯🏹💯🎯','百發百中','每次都命中','形容射箭技術高明，也比喻料事準確。','《戰國策・西周策》'],
+ ['9️⃣🐂1️⃣〰️','九牛一毛','微不足道','比喻極大數量中極微小的一部分。','漢・司馬遷〈報任安書〉'],
+ ['🧑‍🎨💭🎋','胸有成竹','事前早有打算','比喻做事之前已有通盤考慮。','宋・蘇軾〈文與可畫篔簹谷偃竹記〉'],
+ ['💥🍲⚓🚢','破釜沉舟','不留退路','比喻下定決心，不顧一切幹到底。','《史記・項羽本紀》'],
+ ['🛌🪵👅🟢','臥薪嘗膽','刻苦自勵','形容人刻苦自勵，立志雪恥圖強。','《史記・越王勾踐世家》'],
+ ['👂🐔🌅💃','聞雞起舞','及時奮發','比喻有志之士及時奮發。','《晉書・祖逖傳》'],
+
+ ['📜🗣️⚔️','紙上談兵','空談理論','比喻空談理論，不能解決實際問題。','《史記・廉頗藺相如列傳》'],
+ ['🙉🦹🔔','掩耳盜鈴','自欺欺人','比喻自己欺騙自己，明明掩蓋不了的事偏要設法掩蓋。','《呂氏春秋・自知》'],
+ ['🔪🛶🔍🗡️','刻舟求劍','不知變通','比喻拘泥固執，不懂事物已發展變化。','《呂氏春秋・察今》'],
+ ['✋🌱⬆️','拔苗助長','急於求成','比喻違反事物發展規律，急於求成，反而壞事。','《孟子・公孫丑上》'],
+ ['🐦⚔️🦪','鷸蚌相爭','相持不下','比喻雙方爭持不下，讓第三者從中得利。','《戰國策・燕策二》'],
+ ['👴🐎💨❓','塞翁失馬','壞事可能變好事','比喻一時雖然受到損失，也許反而因此得到好處。','《淮南子・人間訓》'],
+ ['3️⃣👀🛖','三顧茅廬','誠心邀請','比喻真心誠意，一再邀請。','三國・諸葛亮〈出師表〉'],
+ ['🌿🌳🟰💂','草木皆兵','驚慌疑懼','形容人在驚慌時疑神疑鬼。','《晉書・苻堅載記》'],
+ ['4️⃣🧭🎶😢','四面楚歌','孤立無援','比喻陷入四面受敵、孤立無援的境地。','《史記・項羽本紀》'],
+ ['👊🌿😱🐍','打草驚蛇','行事不密','比喻做法不謹慎，反而驚動了對方。','宋・鄭文寶《南唐近事》'],
+
+ ['🐉✈️🦚💃','龍飛鳳舞','筆勢生動','形容書法筆勢奔放活潑。','宋・蘇軾〈表忠觀碑〉'],
+ ['🐺😋🐯😋','狼吞虎嚥','吃得又快又急','形容吃東西又猛又急的樣子。',''],
+ ['👄✅❤️❌','口是心非','心口不一','嘴上說的是一套，心裡想的是另一套。','晉・葛洪《抱朴子・微旨》'],
+ ['🙌💃🦶','手舞足蹈','非常高興','形容高興到了極點。','〈毛詩序〉'],
+ ['🌗🛣️🛑','半途而廢','做到一半就停','比喻做事有始無終。','《禮記・中庸》'],
+ ['💧⬇️🪨🕳️','水滴石穿','持之以恆','比喻力量雖小，只要堅持不懈，就能成功。','宋・羅大經《鶴林玉露》'],
+ ['🚗💧🐎🐉','車水馬龍','交通繁忙','形容來往車馬很多，連續不斷的熱鬧情景。','《後漢書・明德馬皇后紀》'],
+ ['🐦💬🌸👃','鳥語花香','春光明媚','形容春天美好的景象。',''],
+ ['🔪🐔👀🐒','殺雞儆猴','懲一儆百','比喻懲罰一個人來警告其他人。',''],
+ ['🔥➕🛢️','火上加油','讓事情更糟','比喻使人更加憤怒或使事態更加嚴重。',''],
+
+ ['1️⃣🔪2️⃣🪵','一刀兩斷','斷絕關係','比喻堅決斷絕關係。',''],
+ ['5️⃣🌸8️⃣🚪','五花八門','變化多端','比喻花樣繁多或變化多端。',''],
+ ['🔟✅🔟✨','十全十美','完美無缺','各方面都非常完美，毫無缺陷。',''],
+ ['🐯➕🪽','如虎添翼','強上加強','比喻強有力的人得到幫助後更加強大。','三國・諸葛亮《心書》'],
+ ['🥚💥🪨','以卵擊石','自不量力','比喻不估計自己的力量，自取滅亡。','《墨子・貴義》'],
+ ['🟡🐔1️⃣🦵','金雞獨立','單腳站立','指用一條腿站立的姿勢。',''],
+ ['1️⃣👁️🔟📃','一目十行','讀書很快','形容看書非常快。','《梁書・簡文帝紀》'],
+ ['🐎🐎🐯🐯','馬馬虎虎','隨便應付','形容做事草率，或指勉強、還過得去。',''],
+ ['❤️🌸😤💥','心花怒放','高興極了','形容心裡高興得像花兒盛開一樣。',''],
+ ['👁️🚫🔄👀','目不轉睛','非常專注','眼珠一動也不動地盯著看，形容注意力集中。',''],
+
+ ['🐭🙆💨','抱頭鼠竄','狼狽逃跑','抱著頭像老鼠一樣逃竄，形容狼狽逃跑。','《漢書・蒯通傳》'],
+ ['🐔🐕🚫😌','雞犬不寧','騷擾得很厲害','形容騷擾得很厲害，連雞狗都不得安寧。','唐・柳宗元〈捕蛇者說〉'],
+ ['☁️🌸🌀⬇️','天花亂墜','說得動聽但不實際','形容說話有聲有色，極其動聽，多指誇大、不切實際。',''],
+ ['1️⃣☀️1000🛣️','一日千里','進步極快','形容進展極快。','《莊子・秋水》'],
+ ['🐯👄✋🦷','虎口拔牙','非常危險','比喻做十分危險的事。',''],
+ ['7️⃣⬆️8️⃣⬇️','七上八下','心神不定','形容心裡慌亂不安。',''],
+ ['3️⃣❤️2️⃣💭','三心二意','猶豫不決','形容猶豫不決，意志不堅定。','元・關漢卿《救風塵》'],
+ ['👥⛰️👥🌊','人山人海','人非常多','形容聚集的人非常多。',''],
+ ['🐎➡️🏆','馬到成功','很快取得成功','比喻一開始就取得成功。','元・無名氏《小尉遲》'],
+ ['🐭👁️📏🔦','鼠目寸光','目光短淺','比喻目光短淺，沒有遠見。','清・蔣士銓《臨川夢》'],
+
+ /* ---------- 第 61–200 關 ---------- */
+ ['1️⃣⛵🌬️👍','一帆風順','旅途順利','比喻非常順利，沒有阻礙。',''],
+ ['1️⃣👀💘','一見鍾情','初次見面就愛上','指一見面就產生了愛情。',''],
+ ['1️⃣🪨2️⃣🐦','一石二鳥','一舉兩得','比喻做一件事而得到兩種好處。',''],
+ ['1️⃣💧2️⃣👀','一清二楚','非常清楚','形容非常清楚明白。',''],
+ ['3️⃣📏2️⃣✂️','三長兩短','意外災禍','指意外的災禍或事故，多指人的死亡。',''],
+ ['4️⃣🌊🏠','四海為家','到處漂泊','指到處漂泊，沒有固定住所。',''],
+ ['5️⃣🎨6️⃣🌈','五顏六色','色彩繁多','形容色彩繁多。',''],
+ ['6️⃣🧘❌😵','六神無主','心慌意亂','形容驚慌或著急而沒有主意。',''],
+ ['8️⃣🧙🌊','八仙過海','各顯本領','比喻各自拿出本領，互相競賽。',''],
+ ['9️⃣💀1️⃣🌱','九死一生','經歷極大危險','形容經歷極大危險而倖存。',''],
+ ['🔟🧭🥷','十面埋伏','到處是伏兵','指設下周密埋伏以殲滅敵人。',''],
+ ['💯🌸🌺🌼','百花齊放','繁榮興盛','形容百花盛開，比喻各種形式和風格自由發展。',''],
+ ['1000⚖️1️⃣〰️','千鈞一髮','極其危險','比喻情況萬分危急。','唐・韓愈〈與孟尚書書〉'],
+ ['🟣🟣🔴🔴🌸','萬紫千紅','百花盛開','形容百花齊放，色彩豔麗。','宋・朱熹〈春日〉'],
+ ['👥👥👥➡️1️⃣❤️','萬眾一心','團結一致','千萬人一條心，形容團結一致。',''],
+ ['1️⃣🤝💰💰','一諾千金','說話算數','形容說話算數，極有信用。','《史記・季布欒布列傳》'],
+ ['1️⃣〰️🚫✋','一毛不拔','非常吝嗇','形容為人極其吝嗇自私。','《孟子・盡心上》'],
+ ['1️⃣🏋️2️⃣🎁','一舉兩得','一次得到兩個好處','做一件事得到兩方面的好處。',''],
+ ['1️⃣🐦📢😲','一鳴驚人','突然有驚人成就','比喻平時沒有突出表現，一下子做出驚人成績。','《史記・滑稽列傳》'],
+ ['1️⃣🍂➡️🍁','一葉知秋','見微知著','從一片落葉知道秋天到來，比喻從細微跡象推知整體趨勢。','《淮南子・說山訓》'],
+
+ ['🚪👉👀⛰️','開門見山','直截了當','比喻說話寫文章直截了當，不拐彎抹角。',''],
+ ['⛰️✨💧🌿','山清水秀','風景優美','形容風景優美。',''],
+ ['🌬️😌☀️✨','風和日麗','天氣晴好','形容天氣晴朗暖和。',''],
+ ['🌬️🌧️👥🛶','風雨同舟','共度難關','比喻共同經歷患難。','《孫子・九地》'],
+ ['🌧️➡️☀️','雨過天晴','情況好轉','比喻黑暗過去，光明到來。',''],
+ ['🌕💡⭐','月明星稀','月夜','月光明亮，星星稀少。','三國・曹操〈短歌行〉'],
+ ['🌸👍🌕','花好月圓','美好圓滿','比喻美好圓滿，多用作新婚頌詞。',''],
+ ['🌱☀️🌸','春暖花開','春天景色','春天氣候溫暖，百花盛開。',''],
+ ['🍁⬆️🌬️😌','秋高氣爽','秋天天氣','形容秋季天空晴朗、氣候涼爽。',''],
+ ['🧊🌌❄️🌍','冰天雪地','非常寒冷','形容冰雪漫天蓋地，極為寒冷。',''],
+ ['🌊🎣🪡','大海撈針','很難找到','比喻極難找到。',''],
+ ['🌊↔️🌌','海闊天空','無拘無束','形容大自然廣闊，也比喻想像或說話毫無拘束。',''],
+ ['🌊1️⃣🌾','滄海一粟','非常渺小','比喻非常渺小，微不足道。','宋・蘇軾〈赤壁賦〉'],
+ ['🪨⬇️🌊','石沉大海','毫無音信','比喻始終沒有消息。',''],
+ ['💧⬇️🪨⬆️','水落石出','真相大白','比喻事情真相完全顯露。','宋・蘇軾〈後赤壁賦〉'],
+ ['🥤💧💭⛲','飲水思源','不忘本','比喻不忘本。','北周・庾信〈徵調曲〉'],
+ ['🔥👁️🟡👁️','火眼金睛','能識別真偽','比喻能識別真偽的眼力。','《西遊記》'],
+ ['🥛💧🚚🪵🔥','杯水車薪','無濟於事','比喻力量太小，解決不了問題。','《孟子・告子上》'],
+ ['🔥🔥🌾','如火如荼','氣勢旺盛','形容氣勢旺盛、氣氛熱烈。','《國語・吳語》'],
+ ['🔥🏠🦹💰','趁火打劫','乘人之危','比喻乘人危急時謀取私利。',''],
+
+ ['🤒🔍💊','對症下藥','針對問題解決','比喻針對問題所在採取有效措施。',''],
+ ['💊➡️🤒❌','藥到病除','立即見效','比喻措施得當，問題立即解決。',''],
+ ['🤒➡️❤️🫁','病入膏肓','無可救藥','比喻事態嚴重到無法挽救。','《左傳・成公十年》'],
+ ['❤️🌄😌','心曠神怡','心情舒暢','心境開闊，精神愉快。','宋・范仲淹〈岳陽樓記〉'],
+ ['❤️🔗❤️🦏','心有靈犀','心意相通','比喻雙方心意相通。','唐・李商隱〈無題〉'],
+ ['❤️😱🟢🦘','心驚膽跳','非常害怕','形容非常害怕。',''],
+ ['🤨✈️🎨💃','眉飛色舞','非常得意','形容非常得意、興奮。',''],
+ ['🤨✨👀😊','眉清目秀','相貌清秀','形容容貌清秀俊美。',''],
+ ['👂👂8️⃣🧭','耳聽八方','非常機警','形容非常機警，各方面都注意到了。',''],
+ ['👂👀1️⃣🆕','耳目一新','感到新鮮','指所見所聞跟以前完全不同，使人感到新鮮。',''],
+ ['👄🟰🌊⬇️','口若懸河','能言善辯','形容能言善辯，說起話來滔滔不絕。','《世說新語・賞譽》'],
+ ['😮👅🪢','張口結舌','說不出話','形容理屈詞窮或驚愕而說不出話。',''],
+ ['🙌💦🦶🌀','手忙腳亂','慌張忙亂','形容做事慌張而沒有條理。',''],
+ ['🙌🦶❓😰','手足無措','不知怎麼辦','形容舉動慌亂，不知如何應付。','《論語・子路》'],
+ ['🦶🧠➕💡','足智多謀','很有智謀','富有智慧，善於謀劃。',''],
+ ['🗣️🗣️✅🛣️','頭頭是道','很有條理','形容說話做事很有條理。',''],
+ ['😳🔴👂🔴','面紅耳赤','臉紅','形容因激動、害羞或發怒而臉部發紅。',''],
+ ['👁️😳👄😶','目瞪口呆','驚呆了','形容吃驚或受窘而發愣的樣子。',''],
+ ['❤️🚫🤲','愛不釋手','非常喜愛','喜愛得捨不得放手。',''],
+ ['🤲🫃😂','捧腹大笑','笑得很厲害','形容遇到極可笑的事，笑得不能抑制。','《史記・日者列傳》'],
+
+ ['😊🫥🔪','笑裡藏刀','外表和善內心陰險','比喻外表和善，內心陰險。','《舊唐書・李義府傳》'],
+ ['😄➡️👀🌈','喜出望外','意外高興','因遇到出乎意料的喜事而非常高興。',''],
+ ['😭😂🚫','哭笑不得','處境尷尬','哭也不好，笑也不好，形容處境尷尬。',''],
+ ['🔥😡3️⃣📏','火冒三丈','非常生氣','形容憤怒到極點。',''],
+ ['😡💇⬆️👑','怒髮衝冠','極度憤怒','頭髮豎起頂起帽子，形容極度憤怒。','《史記・廉頗藺相如列傳》'],
+ ['🟢🤏🟰🐭','膽小如鼠','非常膽小','形容非常膽小。',''],
+ ['1️⃣👣🪜🌌','一步登天','一下達到極高','比喻一下子達到極高的地位或境界。',''],
+ ['👣👣⬆️⬆️','步步高升','職位不斷提升','比喻職位不斷上升。',''],
+ ['🦶⬇️🌍✅','腳踏實地','做事踏實','比喻做事踏實認真。',''],
+ ['🚶🐎👀🌸','走馬看花','粗略觀察','比喻粗略地觀察事物。','唐・孟郊〈登科後〉'],
+ ['👴🐎🧭🛣️','老馬識途','經驗豐富','比喻有經驗的人對事情比較熟悉。','《韓非子・說林上》'],
+ ['💦🐎🏅','汗馬功勞','辛勤的貢獻','原指戰功，後泛指辛勤工作做出的貢獻。','《韓非子・五蠹》'],
+ ['🐎🐎🐎💨','萬馬奔騰','聲勢浩大','形容聲勢浩大，氣勢雄偉。',''],
+ ['🏔️⬇️🐎✋','懸崖勒馬','及時回頭','比喻到了危險的邊緣及時醒悟回頭。',''],
+ ['👉🦌🟰🐎','指鹿為馬','顛倒是非','比喻故意顛倒黑白，混淆是非。','《史記・秦始皇本紀》'],
+ ['🐂🔪🤏🧪','牛刀小試','稍微展露本領','比喻有大本領的人先在小事上略展身手。',''],
+ ['💨💪🟰🐂','氣壯如牛','氣勢很足','形容氣勢很壯。',''],
+ ['🐑➡️🐯👄','羊入虎口','自投險境','比喻落入險境，有死無生。',''],
+ ['👉✋🪢🐑','順手牽羊','趁機拿走','比喻乘機拿走別人的東西。',''],
+ ['🐔🪶🧄🥔','雞毛蒜皮','瑣碎小事','比喻無關緊要的瑣碎小事。',''],
+
+ ['🐔✈️🥚💥','雞飛蛋打','兩頭落空','比喻兩頭落空，一無所得。',''],
+ ['😶🟰🪵🐔','呆若木雞','發愣','形容因恐懼或驚訝而發愣的樣子。','《莊子・達生》'],
+ ['🐕😰🦘🧱','狗急跳牆','走投無路亂來','比喻走投無路時不顧一切地採取極端行動。',''],
+ ['🦊👬🐕👬','狐朋狗友','不正派的朋友','比喻不務正業的朋友。',''],
+ ['🐺❤️🐕🫁','狼心狗肺','心腸狠毒','比喻心腸狠毒或忘恩負義。',''],
+ ['🚶🛣️👴🐭','過街老鼠','人人痛恨','比喻人人痛恨的人。',''],
+ ['🤾🐭😬🏺','投鼠忌器','有所顧忌','比喻想打擊壞人又怕傷及其他人或事物。','《漢書・賈誼傳》'],
+ ['🐯🔙🐻〰️','虎背熊腰','身材魁梧','形容人身材魁梧健壯。',''],
+ ['🐉⬆️🐯🦘','龍騰虎躍','生氣勃勃','形容動作矯健有力，或氣氛熱烈。',''],
+ ['🌱🐉⚡🐯','生龍活虎','活潑有生氣','比喻活潑矯健，富有生氣。',''],
+ ['🎨🐉👉👁️','畫龍點睛','關鍵一筆','比喻在關鍵處加上一筆，使內容更生動傳神。','唐・張彥遠《歷代名畫記》'],
+ ['👀👦➡️🐉','望子成龍','期盼孩子成才','希望兒子成為出類拔萃的人。',''],
+ ['🐉🐎💪✨','龍馬精神','精神旺盛','比喻健旺的精神。',''],
+ ['😱🏹🐦','驚弓之鳥','受過驚嚇','比喻受過驚嚇的人碰到一點動靜就非常害怕。','《戰國策・楚策四》'],
+ ['🤪🐦1️⃣✈️','笨鳥先飛','能力差先行動','比喻能力差的人做事時，怕落後而先行一步。',''],
+ ['🐦‍⬛🐦🔇','鴉雀無聲','非常安靜','形容非常安靜。',''],
+ ['🦅🛣️🔢','鵬程萬里','前程遠大','比喻前程遠大。','《莊子・逍遙遊》'],
+ ['🚪🕸️🐦','門可羅雀','冷清','形容門庭冷落，賓客稀少。','《史記・汲鄭列傳》'],
+ ['🐟👁️🔀⚪','魚目混珠','以假亂真','比喻以假亂真。',''],
+ ['🌫️💧✋🐟','渾水摸魚','趁亂取利','比喻趁混亂時機撈取好處。',''],
+
+ ['🌳🧗🔍🐟','緣木求魚','方法錯誤','比喻方向、方法錯誤，不可能達到目的。','《孟子・梁惠王上》'],
+ ['🐟⬇️🪿⬇️','沉魚落雁','容貌極美','形容女子容貌極美。','《莊子・齊物論》'],
+ ['🦗💪🛑🚗','螳臂當車','自不量力','比喻自不量力，招致失敗。','《莊子・人間世》'],
+ ['🦋➡️🔥','飛蛾撲火','自取滅亡','比喻自取滅亡。',''],
+ ['🪰💧👆','蜻蜓點水','做事膚淺','比喻做事膚淺不深入。','唐・杜甫〈曲江〉'],
+ ['🐛🧶🪢','作繭自縛','自己害自己','比喻做了某事，結果反而使自己受困。',''],
+ ['🕷️🧵🐎👣','蛛絲馬跡','細微線索','比喻隱約可尋的線索和跡象。',''],
+ ['🪑🕳️👀🌌','坐井觀天','眼界狹小','比喻眼界狹小，見識短淺。','唐・韓愈〈原道〉'],
+ ['🍈✅🔗⬇️','瓜熟蒂落','時機成熟','比喻條件成熟，事情自然成功。',''],
+ ['🌱🍈➡️🍈','種瓜得瓜','有因必有果','比喻做了什麼事，就得到什麼樣的結果。',''],
+ ['🌸➡️🍎','開花結果','有了成果','比喻事業獲得成功。',''],
+ ['🌿➕🍃🌳','枝繁葉茂','興旺','形容樹木茂盛，比喻家族興旺。',''],
+ ['🌳⬇️🔩','根深蒂固','難以動搖','比喻基礎穩固，不容易動搖。',''],
+ ['🍂⬇️🌳🫚','落葉歸根','回到故鄉','比喻事物有一定歸宿，多指客居他鄉終要回到本鄉。',''],
+ ['🌧️➡️🌱🎋','雨後春筍','大量湧現','比喻新事物大量湧現。',''],
+ ['🌸💬🎩🗣️','花言巧語','虛假動聽的話','指虛假而動聽的話。',''],
+ ['🙈🌙😳🌸','閉月羞花','容貌美麗','形容女子容貌美麗。',''],
+ ['🪞🌸💧🌙','鏡花水月','虛幻','比喻虛幻的景象。',''],
+ ['1️⃣🌫️🚫🧹','一塵不染','非常乾淨','形容非常清潔或人品純潔。',''],
+ ['💧🚫⬇️🪣','滴水不漏','非常周密','形容說話做事非常周密。',''],
+
+ ['🍲⬇️✋🪵','釜底抽薪','從根本解決','比喻從根本上解決問題。',''],
+ ['🔙🌊1️⃣⚔️','背水一戰','決一死戰','比喻在艱難情況下與敵人決一死戰。','《史記・淮陰侯列傳》'],
+ ['⚔️⏰🪨🔱','臨陣磨槍','事到臨頭才準備','比喻事到臨頭才倉促準備。',''],
+ ['🎣🐯➡️⛰️','調虎離山','引開對手','比喻用計使對方離開原地，以便乘機行事。',''],
+ ['📢⬅️👊➡️','聲東擊西','迷惑對手','表面上說攻東邊，實際攻西邊，比喻迷惑對方。',''],
+ ['🔄😞➡️🏆','反敗為勝','扭轉局面','扭轉敗局，轉為勝利。',''],
+ ['🚩🔓🏆','旗開得勝','一開始就成功','比喻事情一開始就取得好成績。',''],
+ ['➡️🎯🚫👹','所向無敵','力量強大','形容力量強大，無人能敵。',''],
+ ['🌌⬇️🚫👯','天下無雙','獨一無二','形容獨一無二，極為突出。',''],
+ ['🌌📏🌍⏳','天長地久','永久不變','形容時間悠久，也比喻愛情永恆。','《老子》第七章'],
+ ['🌌👘🚫🪡','天衣無縫','完美無缺','比喻事物周密完善，毫無破綻。',''],
+ ['🌌🔄🌍🙃','天翻地覆','變化巨大','形容變化極大或鬧得很凶。',''],
+ ['🌍📐📦➕','地大物博','幅員遼闊資源豐富','指國家疆土遼闊，資源豐富。',''],
+ ['🔝🌌🧍🌍','頂天立地','氣概豪邁','形容形象高大，氣概豪邁。',''],
+ ['👶😊🌈✨','天真爛漫','純真','形容心地單純，毫無做作。',''],
+ ['☀️🆕🌙🔀','日新月異','變化很快','每天都在更新，每月都有變化，形容發展迅速。',''],
+ ['☀️📦🌙📚','日積月累','長時間累積','一天天、一月月地積累。',''],
+ ['♨️♨️☀️⬆️','蒸蒸日上','越來越好','形容事業一天天向上發展。',''],
+ ['💡⏳🟰🏹','光陰似箭','時間過得快','形容時間過得極快。',''],
+ ['⏱️⏱️❗⚔️','分秒必爭','把握時間','一分一秒也不放過，形容抓緊時間。',''],
+];
+/* ================= 排版題圖 =================
+   以答案為 key；沒有列在這裡的題目沿用 PUZZLES 裡的 emoji 字串。
+   每個元素：[字, x, y, 大小, 選項]，畫布寬 100、高 70（0,0 在左上）。
+   選項：k 用楷體中文字、c 顏色、r 旋轉角度、fx 左右翻轉、o 透明度 */
+const SCENES = {
+  '畫蛇添足': [['🐍',48,32,34],['🦶',37,55,10,{r:-12}],['🦶',57,56,10,{r:12}],['🖌️',85,15,15,{r:-25}]],
+  '井底之蛙': [['井',50,35,64,{k:1,c:'#A88B55'}],['🐸',50,37,13],['☁️',14,9,9,{o:.85}],['☀️',87,9,9]],
+  '狐假虎威': [['🐯',67,31,34],['🦊',33,43,22],['🐰',8,60,9,{fx:1}],['🐿️',93,61,9]],
+  '虎頭蛇尾': [['🐯',27,33,30],['🐍',70,45,19,{fx:1}]],
+  '鶴立雞群': [['🦢',50,27,32],['🐔',13,58,12],['🐔',32,60,12,{fx:1}],['🐔',68,60,12],['🐔',87,58,12,{fx:1}]],
+  '雪中送炭': [['❄️',10,10,8],['❄️',32,6,6],['❄️',88,18,7],['🥶',27,44,24],['🔥',73,38,18],['🤲',73,58,14]],
+  '杯弓蛇影': [['🍷',46,40,36],['🐍',48,44,10,{o:.5}],['🏹',85,15,14,{r:30}],['😱',15,17,14]],
+  '愚公移山': [['山',64,33,56,{k:1,c:'#2F7D6A'}],['👴',17,52,18],['⛏️',31,44,12,{r:-20}]],
+  '聞雞起舞': [['🌅',50,12,18],['🐓',22,44,24,{fx:1}],['💬',37,24,10],['🕺',75,44,26]],
+  '心花怒放': [['心',50,36,50,{k:1,c:'#C0392B'}],['🌸',18,14,10,{r:-20}],['🌸',82,14,10,{r:20}],['🌸',10,48,9],['🌸',90,48,9],['🌸',50,6,8],['💥',70,58,9]],
+  '七上八下': [['七',28,15,26,{k:1}],['⬆️',28,42,11],['八',72,55,26,{k:1}],['⬇️',72,28,11]],
+  '人山人海': (()=>{ const a=[];
+      for(let k=0;k<5;k++) for(let j=0;j<=k;j++) a.push(['人',50+(j-k/2)*11,7+k*10.5,10,{k:1,c:'#2F7D6A'}]);
+      for(let j=0;j<9;j++) a.push(['人',6+j*11,64,9,{k:1,c:'#2E6FA7',r:(j%2?8:-8)}]);
+      return a; })(),
+};
+const PER = 20; // 每卷關數
+const CHAPTERS = ['童生','秀才','廩生','舉人','貢士','進士','探花','榜眼','狀元','翰林'];
+const RANKS = CHAPTERS.map((n,i)=>[i*PER,n]).concat([[200,'大學士']]);
+const EXTRA = '天地日月風雲山川金木土人口手心目耳頭足馬牛羊雞狗龍虎鳥魚花草竹石光明東西南北上下左右大小多少長短高低前後春秋冬夏紅白黑青公王家國門開關行走飛來去生死';
+const ALL_CHARS = [...new Set((PUZZLES.map(p=>p[1]).join('')+EXTRA).split(''))];
+const COST = {reveal:30, remove:20, clue:10};
+
+/* ================= 存檔 ================= */
+const KEY = 'idiom-guess-v1';
+const fresh = () => ({coins:100, cleared:{}, levels:{}, lastSign:'', streak:0, sound:true, theme:'auto'});
+let S = load();
+function load(){
+  try{ const raw = localStorage.getItem(KEY); if(raw) return Object.assign(fresh(), JSON.parse(raw)); }catch(e){}
+  return fresh();
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+/* ================= 工具 ================= */
+const $ = id => document.getElementById(id);
+function rng(seed){ return ()=>{ seed|=0; seed=seed+0x6D2B79F5|0; let t=Math.imul(seed^seed>>>15,1|seed); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function shuffle(arr, r){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
+function today(d=new Date()){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function clearedCount(){ return Object.keys(S.cleared).length; }
+function rankOf(n){ let r=RANKS[0][1]; for(const [k,v] of RANKS) if(n>=k) r=v; return r; }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toast.h); toast.h=setTimeout(()=>t.classList.remove('on'),1600); }
+function refreshCoins(){ document.querySelectorAll('.coinVal').forEach(e=>e.textContent=S.coins); }
+function applyTheme(){
+  const r=document.documentElement;
+  if(S.theme==='auto') r.removeAttribute('data-theme'); else r.setAttribute('data-theme',S.theme);
+  $('btnTheme').textContent = {auto:'跟隨系統',light:'淺色',dark:'深色'}[S.theme];
+}
+
+/* ================= 音效 ================= */
+let AC=null;
+function beep(freqs, dur=.09, type='triangle', vol=.14){
+  if(!S.sound) return;
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    let t = AC.currentTime;
+    freqs.forEach(f=>{
+      const o=AC.createOscillator(), g=AC.createGain();
+      o.type=type; o.frequency.value=f; g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(.001,t+dur);
+      o.connect(g).connect(AC.destination); o.start(t); o.stop(t+dur); t+=dur*.8;
+    });
+  }catch(e){}
+}
+const sfx = {
+  tap:()=>beep([660],.05),
+  back:()=>beep([440],.05),
+  wrong:()=>beep([220,180],.14,'square',.08),
+  win:()=>beep([523,659,784,1047],.12),
+  coin:()=>beep([988,1319],.08,'sine'),
+};
+
+/* ================= 畫面切換 ================= */
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', s.id===id));
+  if(id==='sHome') renderHome();
+  if(id==='sLevels') renderLevels();
+  refreshCoins();
+}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{ sfx.back(); go(b.dataset.go); });
+
+/* ================= 首頁 ================= */
+function firstUnsolved(){ for(let i=0;i<PUZZLES.length;i++) if(!S.cleared[i]) return i; return -1; }
+function renderHome(){
+  const n=clearedCount();
+  $('rankName').textContent = rankOf(n);
+  $('rankBar').style.width = (n/PUZZLES.length*100)+'%';
+  $('rankText').textContent = `已過 ${n} / ${PUZZLES.length} 關`;
+  const nx = firstUnsolved();
+  $('btnContinue').textContent = n===0 ? '開始闖關' : nx<0 ? '全部過關！重溫第 1 關' : `繼續第 ${nx+1} 關`;
+  const signed = S.lastSign===today();
+  $('btnSign').disabled = signed;
+  $('btnSign').innerHTML = signed ? '今日已簽到' : '每日簽到 <span class="pill">+'+signReward()+'</span>';
+}
+function signReward(){
+  const y = new Date(); y.setDate(y.getDate()-1);
+  const streak = S.lastSign===today(y) ? S.streak+1 : 1;
+  return 20 + Math.min(streak-1,6)*5;
+}
+$('btnContinue').onclick=()=>{ sfx.tap(); const nx=firstUnsolved(); startLevel(nx<0?0:nx); };
+$('btnLevels').onclick=()=>{ sfx.tap(); go('sLevels'); };
+$('btnSign').onclick=()=>{
+  const y=new Date(); y.setDate(y.getDate()-1);
+  const reward=signReward();
+  S.streak = S.lastSign===today(y) ? S.streak+1 : 1;
+  S.lastSign = today(); S.coins += reward; save();
+  sfx.coin(); toast(`簽到成功，獲得 ${reward} 金幣（連續 ${S.streak} 天）`);
+  renderHome(); refreshCoins();
+};
+
+/* ================= 關卡列表 ================= */
+function unlocked(i){ return i===0 || !!S.cleared[i-1] || !!S.cleared[i]; }
+function renderLevels(){
+  const box=$('levelList'); box.innerHTML='';
+  const nx=firstUnsolved();
+  CHAPTERS.forEach((name,c)=>{
+    const from=c*PER, to=Math.min(from+PER,PUZZLES.length);
+    if(from>=PUZZLES.length) return;
+    let done=0; for(let i=from;i<to;i++) if(S.cleared[i]) done++;
+    const head=document.createElement('div'); head.className='chapter';
+    head.innerHTML=`<h3>第${'一二三四五六七八九十'[c]}卷・${name}</h3><span>${done} / ${to-from}</span>`;
+    box.appendChild(head);
+    const g=document.createElement('div'); g.className='grid5';
+    for(let i=from;i<to;i++){
+      const b=document.createElement('button'); b.className='lv';
+      const cl=S.cleared[i];
+      if(cl){ b.classList.add('done'); b.innerHTML=`${i+1}<span class="st">${'★'.repeat(cl.stars)}</span>`; }
+      else if(unlocked(i)){ b.textContent=i+1; if(i===nx) b.classList.add('next'); }
+      else { b.classList.add('lock'); b.innerHTML='🔒'; b.setAttribute('aria-label',`第 ${i+1} 關（未解鎖）`); }
+      b.onclick=()=>{ if(!unlocked(i)){ sfx.wrong(); toast('先過前一關才能解鎖'); return; } sfx.tap(); startLevel(i); };
+      g.appendChild(b);
+    }
+    box.appendChild(g);
+  });
+  const nb = box.querySelector('.next');
+  if(nb) requestAnimationFrame(()=>nb.scrollIntoView({block:'center'}));
+}
+
+/* ================= 遊戲 ================= */
+let L = null; // 當前關卡狀態
+function levelState(i){
+  if(!S.levels[i]) S.levels[i] = {revealed:[], removed:false, clue:false, hints:0, wrong:0};
+  return S.levels[i];
+}
+function startLevel(i){
+  const [clue, ans] = PUZZLES[i];
+  const r = rng(i*7919+17);
+  const answerChars = ans.split('');
+  const others = shuffle(ALL_CHARS.filter(c=>!answerChars.includes(c)), r).slice(0,16);
+  const tiles = shuffle(answerChars.concat(others), r).map(ch=>({ch, used:false, gone:false}));
+  const st = levelState(i);
+  L = { i, ans:answerChars, tiles, slots:[null,null,null,null], locked:[false,false,false,false], st, busy:false };
+  // 還原已購買提示
+  if(st.removed) markRemoved();
+  st.revealed.forEach(k=>lockSlot(k));
+  go('sPlay');
+  $('lvLabel').textContent=`第 ${i+1} 關`;
+  $('playRank').textContent = CHAPTERS[Math.floor(i/PER)];
+  $('rewardTag').dataset.v = '';
+  renderClue(SCENES[ans] || clue);
+  renderPlay();
+}
+function renderClue(c){
+  const box=$('clueBox'); box.innerHTML='';
+  if(typeof c==='string'){
+    const d=document.createElement('div'); d.className='clue'; d.textContent=c;
+    const glyphs = Intl.Segmenter ? [...new Intl.Segmenter().segment(c)].length : [...c].length/2;
+    d.classList.toggle('long', glyphs > 4);
+    box.appendChild(d); return;
+  }
+  const sc=document.createElement('div'); sc.className='scene';
+  c.forEach(([g,x,y,size,o={}])=>{
+    const e=document.createElement('span'); e.textContent=g;
+    if(o.k) e.className='k';
+    e.style.left=x+'%'; e.style.top=(y/70*100)+'%';
+    e.style.fontSize=`calc(var(--u) * ${size})`;
+    e.style.transform=`translate(-50%,-50%) rotate(${o.r||0}deg) scaleX(${o.fx?-1:1})`;
+    if(o.c) e.style.color=o.c; if(o.o) e.style.opacity=o.o;
+    sc.appendChild(e);
+  });
+  sc.setAttribute('role','img'); sc.setAttribute('aria-label','題目圖');
+  box.appendChild(sc); fitScene(); requestAnimationFrame(fitScene);
+}
+function fitScene(){
+  const box=$('clueBox'), sc=box.querySelector('.scene'); if(!sc) return;
+  const w=Math.min(box.clientWidth, box.clientHeight*100/70);
+  sc.style.width=w+'px'; sc.style.height=(w*.7)+'px'; sc.style.setProperty('--u', (w/100)+'px');
+}
+window.addEventListener('resize', fitScene);
+function markRemoved(){
+  // 移除 8 個錯字（固定順序，避免重整後不同）
+  let n=0;
+  L.tiles.forEach(t=>{ if(n<8 && !L.ans.includes(t.ch)){ t.gone=true; n++; } });
+}
+function lockSlot(k){
+  const ch = L.ans[k];
+  // 先清掉這格原本的字
+  if(L.slots[k]!==null){ L.tiles[L.slots[k]].used=false; L.slots[k]=null; }
+  let idx = L.tiles.findIndex(t=>t.ch===ch && !t.used && !t.gone);
+  if(idx<0){ // 被放到別格了，拿回來
+    const j = L.slots.findIndex((s,jj)=>s!==null && !L.locked[jj] && L.tiles[s].ch===ch);
+    idx = L.slots[j]; L.slots[j]=null;
+  }
+  L.tiles[idx].used=true; L.slots[k]=idx; L.locked[k]=true;
+}
+function renderPlay(){
+  const sl=$('slots'); sl.innerHTML='';
+  const full = L.slots.every(s=>s!==null);
+  const wrongNow = full && L.slots.map(s=>L.tiles[s].ch).join('')!==L.ans.join('');
+  L.slots.forEach((s,k)=>{
+    const b=document.createElement('button'); b.className='slot';
+    if(s!==null){ b.textContent=L.tiles[s].ch; b.classList.add(L.locked[k]?'locked':(wrongNow?'bad':'fill')); }
+    b.setAttribute('aria-label', s!==null ? `第${k+1}字：${L.tiles[s].ch}` : `第${k+1}字：空`);
+    b.onclick=()=>{ if(L.busy||s===null||L.locked[k]) return; sfx.back(); L.tiles[s].used=false; L.slots[k]=null; renderPlay(); };
+    sl.appendChild(b);
+  });
+  const pool=$('pool'); pool.innerHTML='';
+  L.tiles.forEach((t,idx)=>{
+    const b=document.createElement('button'); b.className='ch'; b.textContent=t.ch;
+    if(t.used) b.classList.add('used'); if(t.gone) b.classList.add('gone');
+    b.onclick=()=>pick(idx); pool.appendChild(b);
+  });
+  updateRewardTag();
+  $('textClue').textContent = L.st.clue ? `提示：${PUZZLES[L.i][2]}` : '';
+  $('hRemove').disabled = L.st.removed;
+  $('hClue').disabled = L.st.clue;
+  fitScene();
+  $('hReveal').disabled = L.locked.every(Boolean);
+  refreshCoins();
+}
+function levelReward(){
+  if(S.cleared[L.i]) return null;
+  return (L.st.hints===0 && L.st.wrong===0) ? 15 : 10;
+}
+function updateRewardTag(){
+  const tag=$('rewardTag'), r=levelReward();
+  const prev = tag.dataset.v, now = r===null ? 'done' : String(r);
+  if(r===null){ tag.className='rewardTag done'; tag.textContent='已領取'; tag.setAttribute('aria-label','這關的金幣已經領過'); }
+  else { tag.className='rewardTag'+(r===15?' full':''); tag.innerHTML=`<span class="coin"></span>+${r}`; tag.setAttribute('aria-label',`過關可得 ${r} 金幣`); }
+  if(prev && prev!==now && prev!=='done'){ void tag.offsetWidth; tag.classList.add('drop'); }
+  tag.dataset.v = now;
+}
+function pick(idx){
+  if(L.busy) return;
+  const t=L.tiles[idx]; if(t.used||t.gone) return;
+  const k=L.slots.findIndex(s=>s===null); if(k<0) return;
+  sfx.tap(); t.used=true; L.slots[k]=idx;
+  if(L.slots.every(s=>s!==null)) check(); else renderPlay();
+}
+function check(){
+  const guess=L.slots.map(s=>L.tiles[s].ch).join('');
+  renderPlay();
+  if(guess===L.ans.join('')) return win();
+  L.st.wrong++; save(); sfx.wrong(); updateRewardTag();
+  const sl=$('slots'); sl.classList.remove('shake'); void sl.offsetWidth; sl.classList.add('shake');
+  toast('不對喔，點上面的字可以拿回來');
+}
+function spend(cost){
+  if(S.coins<cost){ sfx.wrong(); toast(`金幣不足（需要 ${cost}），去首頁簽到領金幣吧`); return false; }
+  S.coins-=cost; L.st.hints++; sfx.coin(); return true;
+}
+$('hReveal').onclick=()=>{
+  if(L.busy) return;
+  const k = L.ans.findIndex((ch,kk)=>!L.locked[kk]); if(k<0) return;
+  // 優先揭露填錯或空著的格
+  let target = L.ans.findIndex((ch,kk)=>!L.locked[kk] && (L.slots[kk]===null || L.tiles[L.slots[kk]].ch!==ch));
+  if(target<0) target=k;
+  if(!spend(COST.reveal)) return;
+  lockSlot(target); L.st.revealed.push(target); save();
+  if(L.slots.every(s=>s!==null)) check(); else renderPlay();
+};
+$('hRemove').onclick=()=>{
+  if(L.busy||L.st.removed) return;
+  if(!spend(COST.remove)) return;
+  // 若被刪的字正放在格子裡，先退回
+  L.st.removed=true; markRemoved();
+  L.slots.forEach((s,k)=>{ if(s!==null && L.tiles[s].gone){ L.tiles[s].used=false; L.slots[k]=null; } });
+  save(); renderPlay();
+};
+$('hClue').onclick=()=>{
+  if(L.busy||L.st.clue) return;
+  if(!spend(COST.clue)) return;
+  L.st.clue=true; save(); renderPlay();
+};
+
+function win(){
+  L.busy=true;
+  const st=L.st;
+  const stars = (st.hints===0 && st.wrong===0) ? 3 : (st.hints<=1 && st.wrong<=2) ? 2 : 1;
+  const first = !S.cleared[L.i];
+  const prev = S.cleared[L.i];
+  let reward=0;
+  if(first){ reward = 10 + (stars===3?5:0); S.coins+=reward; }
+  S.cleared[L.i] = {stars: Math.max(stars, prev?prev.stars:0), t:Date.now()};
+  delete S.levels[L.i]; // 重玩時重新計算
+  save();
+  setTimeout(()=>{
+    sfx.win();
+    const [, ans, , meaning, source] = PUZZLES[L.i];
+    $('winAnswer').textContent=ans;
+    $('winStars').innerHTML='★★★'.split('').map((s,k)=>`<span class="${k<stars?'':'off'}">★</span>`).join('');
+    $('winMeaning').textContent=meaning;
+    $('winSource').textContent= source ? `出處：${source}` : '';
+    $('winReward').innerHTML = first ? `<span class="coin"></span>+${reward} 金幣${stars===3?'（完美過關加 5）':''}` : '重玩過關，不再給金幣';
+    const last = L.i===PUZZLES.length-1;
+    $('winNext').textContent = last ? '回到首頁' : '下一關';
+    const beforeRank = rankOf(clearedCount()-(first?1:0)), afterRank = rankOf(clearedCount());
+    if(first && beforeRank!==afterRank) setTimeout(()=>toast(`晉升為「${afterRank}」！`),500);
+    const seal=$('winSeal'); seal.classList.remove('stamp'); void seal.offsetWidth; seal.classList.add('stamp');
+    $('mWin').classList.add('on');
+    refreshCoins();
+  }, 380);
+}
+$('winNext').onclick=()=>{
+  $('mWin').classList.remove('on'); sfx.tap();
+  if(L.i===PUZZLES.length-1){ go('sHome'); return; }
+  startLevel(L.i+1);
+};
+$('winList').onclick=()=>{ $('mWin').classList.remove('on'); sfx.back(); go('sLevels'); };
+
+/* ================= 設定 ================= */
+function openSettings(){
+  $('stCleared').textContent=clearedCount();
+  $('stPerfect').textContent=Object.values(S.cleared).filter(c=>c.stars===3).length;
+  $('stStreak').textContent=S.streak;
+  $('tgSound').classList.toggle('on',S.sound);
+  applyTheme();
+  $('mSettings').classList.add('on');
+}
+$('btnSettings').onclick=()=>{ sfx.tap(); openSettings(); };
+$('btnCloseSet').onclick=()=>{ $('mSettings').classList.remove('on'); renderHome(); };
+$('tgSound').onclick=()=>{ S.sound=!S.sound; save(); $('tgSound').classList.toggle('on',S.sound); sfx.tap(); };
+$('btnTheme').onclick=()=>{ S.theme={auto:'light',light:'dark',dark:'auto'}[S.theme]; save(); applyTheme(); };
+$('btnReset').onclick=()=>{
+  if(!confirm('確定要清除所有闖關紀錄與金幣嗎？這個動作無法復原。')) return;
+  S=fresh(); save(); applyTheme(); openSettings(); renderHome(); refreshCoins(); toast('紀錄已清除');
+};
+document.querySelectorAll('.mask').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m && m.id==='mSettings'){ m.classList.remove('on'); renderHome(); } }));
+
+/* ================= 啟動 ================= */
+/* ================= 存檔轉移 ================= */
+$('btnExport').onclick=async()=>{
+  const code='IDIOM1:'+btoa(unescape(encodeURIComponent(JSON.stringify(S))));
+  try{ await navigator.clipboard.writeText(code); toast('存檔代碼已複製'); }
+  catch(e){ prompt('複製下面這串存檔代碼', code); }
+};
+$('btnImport').onclick=()=>{
+  const code=(prompt('貼上存檔代碼')||'').trim(); if(!code) return;
+  try{
+    if(!code.startsWith('IDIOM1:')) throw 0;
+    const obj=JSON.parse(decodeURIComponent(escape(atob(code.slice(7)))));
+    if(typeof obj.coins!=='number' || typeof obj.cleared!=='object') throw 0;
+    if(!confirm(`匯入後會覆蓋目前進度（已過 ${Object.keys(obj.cleared).length} 關、${obj.coins} 金幣），確定嗎？`)) return;
+    S=Object.assign(fresh(), obj); save(); applyTheme(); openSettings(); renderHome(); refreshCoins(); toast('存檔已匯入');
+  }catch(e){ toast('代碼無法辨識，請確認有完整複製'); }
+};
+
+/* ================= 加入主畫面提示 ================= */
+(function(){
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  const standalone=navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+  let framed=false; try{ framed = window.top!==window.self; }catch(e){ framed=true; }
+  if(ios && !standalone && !framed && !S.a2hsOff) $('a2hs').hidden=false;
+  $('a2hsClose').onclick=()=>{ $('a2hs').hidden=true; S.a2hsOff=true; save(); };
+})();
+
+$('verText').textContent = `版本 ${VERSION}（共 ${PUZZLES.length} 關）`;
+applyTheme(); renderHome(); refreshCoins();
+</script>
+</body>
+</html>
