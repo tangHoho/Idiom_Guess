@@ -199,6 +199,42 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;margin:6px 0 14px}
 .stats b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
 .stats small{font-size:12px;color:#7A5E36}
+
+/* ---------- 成語卡冊 ---------- */
+.btn .cnt{font-size:13px;font-weight:500;background:rgba(0,0,0,.08);border-radius:10px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.cardTools{display:flex;gap:8px;align-items:center;margin:10px 0 4px}
+.cardTools input{flex:1;min-width:0;height:40px;border-radius:12px;border:0;background:var(--panel);color:var(--ink);padding:0 12px;font:inherit;font-size:16px;-webkit-user-select:text;user-select:text}
+.cardTools input::placeholder{color:var(--ink-soft)}
+.chip{height:40px;padding:0 12px;border-radius:12px;background:var(--panel);font-size:14px;font-weight:700;white-space:nowrap}
+.chip.on{background:var(--seal);color:#FFF4E6}
+.cardMeta{font-size:13px;color:var(--ink-soft);margin:6px 2px 10px;font-variant-numeric:tabular-nums}
+.cardGrid{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start;padding:2px 2px 24px;margin:0 -2px}
+.icard{position:relative;width:100%;min-width:0;aspect-ratio:3/4;perspective:800px;content-visibility:auto;contain-intrinsic-size:auto 200px}
+.icard .in{position:absolute;inset:0;transition:transform .45s;transform-style:preserve-3d}
+.icard.flip .in{transform:rotateY(180deg)}
+.icard .face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:22px 8px 12px;text-align:center;overflow:hidden;
+  background:var(--paper);color:var(--paper-ink);box-shadow:0 4px 0 var(--paper-edge),0 8px 16px rgba(0,0,0,.12);
+  background-image:radial-gradient(rgba(120,90,40,.07) 1px,transparent 1px);background-size:7px 7px}
+.icard .rear{transform:rotateY(180deg)}
+.icard .no{position:absolute;top:8px;left:10px;font-size:12px;font-weight:700;color:#8A6A3A;font-variant-numeric:tabular-nums}
+.icard .st{position:absolute;top:7px;right:9px;font-size:11px;letter-spacing:1px;color:var(--gold)}
+.icard .emo{font-size:clamp(24px,8vw,32px);line-height:1.25;word-break:break-all;max-width:100%}
+.icard .word{font-family:var(--kai);font-weight:700;font-size:clamp(26px,8vw,34px);line-height:1.15;letter-spacing:.02em;white-space:nowrap}
+.icard .word.v{writing-mode:vertical-rl;text-orientation:upright;letter-spacing:.12em;font-size:clamp(30px,9.5vw,38px)}
+.icard .mean{font-size:12px;line-height:1.5;color:#6B5436;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding:0 4px}
+.icard .qm{font-family:var(--kai);font-size:30px;color:#B9A27A;letter-spacing:.2em}
+.icard .tap{font-size:11px;color:#9A8260}
+.emptyCards{grid-column:1/-1;text-align:center;color:var(--ink-soft);padding:40px 12px;line-height:1.8}
+.cdEmo{font-size:40px;line-height:1.2;margin:4px 0 8px;word-break:break-all}
+.cdWord{font-family:var(--kai);font-weight:700;font-size:46px;letter-spacing:.14em;margin:0}
+.cdStars{color:var(--gold);letter-spacing:4px;font-size:18px;min-height:1.2em}
+.cdRow{font-size:14px;color:#7A5E36;margin:6px 0 0;line-height:1.6}
+.cdRow b{color:var(--paper-ink);font-weight:700;margin-right:6px}
+.cdNav{display:grid;grid-template-columns:48px 1fr 1fr 48px;gap:8px;margin-top:16px}
+.cdNav .btn{height:48px;font-size:16px}
+.cdNav .arrow{font-size:22px;background:rgba(0,0,0,.06);border-radius:14px}
+.cdNav .arrow:disabled{opacity:.3}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-height:700px){.clue,.clue.long{font-size:42px}.card{min-height:110px;padding:28px 10px 10px}.pool{gap:6px}.stage{gap:10px}.hint{padding:6px 4px}}
 </style>
@@ -223,6 +259,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
     </div>
     <div class="menu">
       <button class="btn primary" id="btnContinue">開始闖關</button>
+      <button class="btn ghost" id="btnCards">成語卡冊 <span class="cnt" id="cardCnt">0</span></button>
       <div class="row2">
         <button class="btn ghost" id="btnLevels">選擇關卡</button>
         <button class="btn ghost" id="btnSign">每日簽到</button>
@@ -241,6 +278,22 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
       <div class="coins"><span class="coin"></span><span class="coinVal">0</span></div>
     </div>
     <div class="levels" id="levelList"></div>
+  </section>
+
+  <!-- 成語卡冊 -->
+  <section class="screen" id="sCards">
+    <div class="bar">
+      <button class="back" data-go="sHome" aria-label="返回">‹</button>
+      <h2>成語卡冊</h2>
+      <div class="coins"><span class="coin"></span><span class="coinVal">0</span></div>
+    </div>
+    <div class="cardTools">
+      <input id="cardSearch" type="search" placeholder="搜尋成語或釋義" autocomplete="off" enterkeyhint="search">
+      <button class="chip" id="chipStar">三星</button>
+      <button class="chip" id="chipQuiz" aria-pressed="false">遮答案</button>
+    </div>
+    <div class="cardMeta" id="cardMeta"></div>
+    <div class="cardGrid" id="cardGrid"></div>
   </section>
 
   <!-- 遊戲 -->
@@ -311,6 +364,23 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   </div>
 </div>
 
+<!-- 成語卡詳情 -->
+<div class="mask" id="mCard">
+  <div class="modal" style="text-align:center">
+    <div class="cdStars" id="cdStars"></div>
+    <div class="cdEmo" id="cdEmo"></div>
+    <h3 class="cdWord" id="cdWord"></h3>
+    <div class="meaning" id="cdMeaning" style="text-align:left"></div>
+    <div id="cdMore" style="text-align:left"></div>
+    <div class="cdNav">
+      <button class="arrow" id="cdPrev" aria-label="上一張">‹</button>
+      <button class="btn ghost" id="cdReplay">重玩這關</button>
+      <button class="btn primary" id="cdClose">關閉</button>
+      <button class="arrow" id="cdNext" aria-label="下一張">›</button>
+    </div>
+  </div>
+</div>
+
 <!-- 詳細紀錄 -->
 <div class="mask" id="mRecords">
   <div class="modal">
@@ -330,7 +400,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG || {};
 
 /* ================= 版本 ================= */
-const VERSION = '1.6.1'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js；1.5.2：同步失敗顯示原因；1.6.0：擴充至 1000 關、20 卷可收合關卡列表；1.6.1：全題庫校對（圖謎、提示、釋義、出處）
+const VERSION = '1.7.0'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js；1.5.2：同步失敗顯示原因；1.6.0：擴充至 1000 關、20 卷可收合關卡列表；1.6.1：全題庫校對（圖謎、提示、釋義、出處）；1.7.0：成語卡冊
 
 /* ================= 題庫 [圖謎, 答案, 字面提示, 釋義, 出處] ================= */
 const PUZZLES = [
@@ -1476,6 +1546,7 @@ function go(id){
   if(id!=='sPlay') pauseTimer();
   document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on', s.id===id));
   if(id==='sHome') renderHome();
+  if(id==='sCards') renderCards();
   if(id==='sLevels'){ openCh=null; renderLevels.scrolled=false; renderLevels(); }
   refreshCoins();
 }
@@ -1488,6 +1559,7 @@ function renderHome(){
   $('rankName').textContent = rankOf(n);
   $('rankBar').style.width = (n/PUZZLES.length*100)+'%';
   $('rankText').textContent = `已過 ${n} / ${PUZZLES.length} 關`;
+  $('cardCnt').textContent = n;
   const nx = firstUnsolved();
   $('btnContinue').textContent = n===0 ? '開始闖關' : nx<0 ? '全部過關！重溫第 1 關' : `繼續第 ${nx+1} 關`;
   const signed = S.lastSign===today();
@@ -1718,7 +1790,7 @@ function win(){
     $('winStars').innerHTML='★★★'.split('').map((s,k)=>`<span class="${k<stars?'':'off'}">★</span>`).join('');
     $('winMeaning').textContent=meaning;
     $('winSource').textContent= source ? `出處：${source}` : '';
-    $('winReward').innerHTML = first ? `<span class="coin"></span>+${reward} 金幣${stars===3?'（完美過關加 5）':''}` : '重玩過關，不再給金幣';
+    $('winReward').innerHTML = first ? `<span class="coin"></span>+${reward} 金幣${stars===3?'（完美過關加 5）':''}・已收入成語卡冊` : '重玩過關，不再給金幣';
     const last = L.i===PUZZLES.length-1;
     $('winNext').textContent = last ? '回到首頁' : '下一關';
     const beforeRank = rankOf(clearedCount()-(first?1:0)), afterRank = rankOf(clearedCount());
@@ -1779,6 +1851,78 @@ $('btnImport').onclick=()=>{
   let framed=false; try{ framed = window.top!==window.self; }catch(e){ framed=true; }
   if(ios && !standalone && !framed && !S.a2hsOff) $('a2hs').hidden=false;
   $('a2hsClose').onclick=()=>{ $('a2hs').hidden=true; S.a2hsOff=true; save(); };
+})();
+
+/* ================= 成語卡冊 ================= */
+const CardView = { star:false, quiz:false, q:'', list:[], cur:-1, flipped:new Set() };
+function cardList(){
+  const q = CardView.q.trim();
+  return Object.keys(S.cleared).map(Number).filter(i=>i<PUZZLES.length).sort((a,b)=>a-b).filter(i=>{
+    if(CardView.star && S.cleared[i].stars!==3) return false;
+    if(!q) return true;
+    const p=PUZZLES[i]; return p[1].includes(q) || p[3].includes(q) || String(i+1)===q;
+  });
+}
+function esc(t){ return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function renderCards(){
+  CardView.list = cardList();
+  const total = clearedCount();
+  $('chipStar').classList.toggle('on',CardView.star);
+  $('chipQuiz').classList.toggle('on',CardView.quiz); $('chipQuiz').setAttribute('aria-pressed',CardView.quiz);
+  $('cardMeta').textContent = total
+    ? `已收錄 ${total} / ${PUZZLES.length} 張` + (CardView.list.length!==total ? `，顯示 ${CardView.list.length} 張` : '') + (CardView.quiz ? '｜點卡片翻面看答案' : '')
+    : '';
+  const g=$('cardGrid');
+  if(!total){ g.innerHTML='<div class="emptyCards">還沒有成語卡<br>每過一關，就會收錄一張卡片</div>'; return; }
+  if(!CardView.list.length){ g.innerHTML='<div class="emptyCards">找不到符合的成語卡</div>'; return; }
+  g.innerHTML = CardView.list.map((i,k)=>{
+    const [clue,ans,,meaning]=PUZZLES[i], c=S.cleared[i];
+    const stars = '★'.repeat(c.stars||1);
+    const answerFace = `<div class="face"><span class="no">${i+1}</span><span class="st">${stars}</span>
+        <div class="word">${esc(ans)}</div><div class="emo" style="font-size:clamp(18px,5.5vw,22px)">${esc(clue)}</div><div class="mean">${esc(meaning)}</div></div>`;
+    const inner = CardView.quiz
+      ? `<div class="face"><span class="no">${i+1}</span><span class="st">${stars}</span><div class="emo">${esc(clue)}</div><div class="qm">？？？？</div><div class="tap">點一下翻面</div></div>`
+        + answerFace.replace('class="face"','class="face rear"')
+      : answerFace;
+    const flip = CardView.quiz && CardView.flipped.has(i) ? ' flip' : '';
+    return `<button class="icard${flip}" data-k="${k}" aria-label="第 ${i+1} 關${CardView.quiz&&!flip?'':'：'+esc(ans)}"><div class="in">${inner}</div></button>`;
+  }).join('');
+}
+$('cardGrid').addEventListener('click',e=>{
+  const b=e.target.closest('.icard'); if(!b) return;
+  const k=+b.dataset.k, i=CardView.list[k];
+  if(CardView.quiz && !CardView.flipped.has(i)){ CardView.flipped.add(i); b.classList.add('flip'); b.setAttribute('aria-label',`第 ${i+1} 關：${PUZZLES[i][1]}`); sfx.tap(); return; }
+  sfx.tap(); openCard(k);
+});
+let cardSearchT;
+$('cardSearch').addEventListener('input',e=>{ clearTimeout(cardSearchT); cardSearchT=setTimeout(()=>{ CardView.q=e.target.value; renderCards(); $('cardGrid').scrollTop=0; },150); });
+$('chipStar').onclick=()=>{ sfx.tap(); CardView.star=!CardView.star; renderCards(); $('cardGrid').scrollTop=0; };
+$('chipQuiz').onclick=()=>{ sfx.tap(); CardView.quiz=!CardView.quiz; CardView.flipped.clear(); renderCards(); };
+$('btnCards').onclick=()=>{ sfx.tap(); go('sCards'); };
+function openCard(k){
+  CardView.cur=k; const i=CardView.list[k]; if(i==null) return;
+  const [clue,ans,hint,meaning,source]=PUZZLES[i], c=S.cleared[i];
+  $('cdStars').innerHTML='★★★'.split('').map((s,j)=>`<span style="${j<(c.stars||1)?'':'color:rgba(0,0,0,.15)'}">★</span>`).join('');
+  $('cdEmo').textContent=clue;
+  $('cdWord').textContent=ans;
+  $('cdMeaning').textContent=meaning;
+  const rows=[['關卡',`第 ${i+1} 關・第${CN_NUM[Math.floor(i/PER)]}卷 ${CHAPTERS[Math.floor(i/PER)]}`],['提示',hint]];
+  if(source) rows.push(['出處',source]);
+  if(c.t) rows.push(['收錄',fmtDate(c.t)+(c.plays>1?`（玩過 ${c.plays} 次）`:'')]);
+  $('cdMore').innerHTML=rows.map(([a,b])=>`<div class="cdRow"><b>${a}</b>${esc(b)}</div>`).join('');
+  $('cdPrev').disabled = k<=0; $('cdNext').disabled = k>=CardView.list.length-1;
+  $('mCard').classList.add('on');
+}
+$('cdPrev').onclick=()=>{ if(CardView.cur>0){ sfx.tap(); openCard(CardView.cur-1); } };
+$('cdNext').onclick=()=>{ if(CardView.cur<CardView.list.length-1){ sfx.tap(); openCard(CardView.cur+1); } };
+$('cdClose').onclick=()=>{ sfx.back(); $('mCard').classList.remove('on'); };
+$('cdReplay').onclick=()=>{ const i=CardView.list[CardView.cur]; $('mCard').classList.remove('on'); sfx.tap(); startLevel(i); };
+$('mCard').addEventListener('click',e=>{ if(e.target.id==='mCard') $('mCard').classList.remove('on'); });
+(function(){ // 卡片詳情左右滑動切換
+  let x0=null;
+  $('mCard').addEventListener('touchstart',e=>{ x0=e.touches[0].clientX; },{passive:true});
+  $('mCard').addEventListener('touchend',e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>60) (dx<0?$('cdNext'):$('cdPrev')).click(); },{passive:true});
 })();
 
 /* ================= 詳細紀錄 ================= */
