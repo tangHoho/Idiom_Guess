@@ -25,8 +25,6 @@
   --kai:"LXGW WenKai TC","Kaiti TC","BiauKai","STKaiti","DFKai-SB",serif;
   --sans:"Noto Sans TC",-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -44,7 +42,8 @@ body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(
   -webkit-user-select:none;user-select:none;overscroll-behavior:none;overflow:hidden}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
 button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.app{height:100%;max-width:520px;margin:0 auto;position:relative;display:flex;flex-direction:column}
+.app{height:100vh;height:100dvh;max-width:520px;margin:0 auto;position:relative;display:flex;flex-direction:column;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .screen{display:none;flex:1;flex-direction:column;min-height:0;padding:12px 16px 16px}
 .screen.on{display:flex}
 
@@ -104,12 +103,12 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .stage{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;padding-top:4px}
 .controls{display:flex;flex-direction:column;gap:10px}
 .card{flex:1;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:34px 10px 10px;
+  background:var(--paper);color:var(--paper-ink);border-radius:18px;padding:32px 8px 8px;
   box-shadow:0 6px 0 var(--paper-edge),0 14px 26px rgba(0,0,0,.16);position:relative;text-align:center;
   background-image:radial-gradient(rgba(120,90,40,.07) 1px,transparent 1px);background-size:7px 7px}
-.clueBox{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;container-type:size}
+.clueBox{flex:1;min-height:0;width:100%;position:relative}
 .ill{display:block}
-.clueBox .ill{width:min(100cqw,100cqh*1.4286);height:auto;aspect-ratio:400/280;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.clueBox .ill{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:auto;border-radius:12px}
 .scene{position:relative;flex:none}
 .scene span{position:absolute;line-height:1;white-space:nowrap;transform-origin:center}
 .scene .k{font-family:var(--kai);font-weight:700}
@@ -405,7 +404,7 @@ button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 const FIREBASE_CONFIG = window.FIREBASE_CONFIG || {};
 
 /* ================= 版本 ================= */
-const VERSION = '1.9.0'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js；1.5.2：同步失敗顯示原因；1.6.0：擴充至 1000 關、20 卷可收合關卡列表；1.6.1：全題庫校對（圖謎、提示、釋義、出處）；1.7.0：成語卡冊；1.8.0：題目改為手繪風插圖；1.9.0：擴充至 2000 關（第 1001–2000 關為新題，舊關卡不變）
+const VERSION = '1.9.1'; // 1.0.0：60 關；1.1.0：200 關、版本號；1.2.0：題圖放大、技能列下移；1.3.0：可得金幣標示；1.4.0：排版題圖、全螢幕 App 設定、存檔匯出匯入；1.5.0：訪客／Google 登入、雲端同步、詳細紀錄；1.5.1：Firebase 設定獨立成 firebase-config.js；1.5.2：同步失敗顯示原因；1.6.0：擴充至 1000 關、20 卷可收合關卡列表；1.6.1：全題庫校對（圖謎、提示、釋義、出處）；1.7.0：成語卡冊；1.8.0：題目改為手繪風插圖；1.9.0：擴充至 2000 關（第 1001–2000 關為新題，舊關卡不變）；1.9.1：修正 iPhone 上題目圖太小
 
 /* ================= 題庫 [圖謎, 答案, 字面提示, 釋義, 出處] ================= */
 const PUZZLES = [
@@ -2940,8 +2939,15 @@ function startLevel(i){
   renderPlay();
 }
 function clueSVG(i, cls=''){ return ILLUS[i] ? ILL.render(ILLUS[i], cls) : ''; }
-function renderClue(i){ $('clueBox').innerHTML = clueSVG(i); }
-function fitScene(){}
+function renderClue(i){ $('clueBox').innerHTML = clueSVG(i); fitScene(); requestAnimationFrame(fitScene); setTimeout(fitScene,120); }
+// 依題目框的實際大小算出插圖尺寸（4:2.8），讓圖在任何螢幕都盡量放到最大
+function fitScene(){
+  const box=$('clueBox'), svg=box && box.querySelector('.ill'); if(!svg) return;
+  const w=Math.max(0,Math.min(box.clientWidth, box.clientHeight*400/280));
+  svg.style.width=w+'px'; svg.style.height=(w*280/400)+'px';
+}
+window.addEventListener('resize', fitScene);
+window.addEventListener('orientationchange', ()=>setTimeout(fitScene,200));
 function markRemoved(){
   // 移除 8 個錯字（固定順序，避免重整後不同）
   let n=0;
